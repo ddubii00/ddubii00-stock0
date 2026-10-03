@@ -75,7 +75,7 @@ function clearSession(res) {
 
 function loginPage(message = "") {
   const error = message ? `<small>${message}</small>` : "";
-  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ddubii-stock0 로그인</title><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#f0f2f5;color:#1a202c;font:13px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.login-page{min-height:100vh;display:grid;place-content:center;text-align:center}.login-card{width:min(360px,calc(100vw - 32px));display:grid;gap:12px;padding:28px;background:#fff;border:1px solid #e2e5ec;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.08)}h1,p{margin:0}h1{font-size:22px}p{color:#6b7280}input,button{width:100%;font:inherit}input{padding:10px;border:1px solid #e2e5ec;border-radius:6px;outline:none}input:focus{border-color:#1a73e8;box-shadow:0 0 0 3px rgba(26,115,232,.12)}button{padding:9px 12px;border:1px solid #1a73e8;border-radius:6px;background:#1a73e8;color:#fff;cursor:pointer}small{color:#dc2626}</style></head><body><main class="login-page"><form class="login-card" method="post" action="/login"><h1>ddubii-stock0</h1><p>투자 루틴과 메모는 모든 기기에서 공유됩니다.</p><input id="password" name="password" type="password" inputmode="numeric" autocomplete="current-password" placeholder="비밀번호" required autofocus><button type="submit">입장</button>${error}</form></main></body></html>`;
+  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ddubii-stock0 로그인</title><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#f0f2f5;color:#1a202c;font:13px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.login-page{min-height:100vh;display:grid;place-content:center;text-align:center}.login-card{width:min(360px,calc(100vw - 32px));display:grid;gap:12px;padding:28px;background:#fff;border:1px solid #e2e5ec;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.08)}h1,p{margin:0}h1{font-size:22px}p{color:#6b7280}input,button{width:100%;font:inherit}input{padding:10px;border:1px solid #e2e5ec;border-radius:6px;outline:none}input:focus{border-color:#1a73e8;box-shadow:0 0 0 3px rgba(26,115,232,.12)}button{padding:9px 12px;border:1px solid #1a73e8;border-radius:6px;background:#1a73e8;color:#fff;cursor:pointer}small{color:#dc2626}</style></head><body><main class="login-page"><form class="login-card" method="post" action="./login"><h1>ddubii-stock0</h1><p>투자 루틴과 메모는 모든 기기에서 공유됩니다.</p><input id="password" name="password" type="password" inputmode="numeric" autocomplete="current-password" placeholder="비밀번호" required autofocus><button type="submit">입장</button>${error}</form></main></body></html>`;
 }
 
 async function readFormBody(req) {
@@ -129,14 +129,14 @@ const server = http.createServer(async (req, res) => {
         return;
       }
       setSession(res, req);
-      res.writeHead(303, { location: "/" });
+      res.writeHead(303, { location: "./" });
       res.end();
       return;
     }
 
     if (url.pathname === "/logout") {
       clearSession(res);
-      res.writeHead(303, { location: "/login" });
+      res.writeHead(303, { location: "./login" });
       res.end();
       return;
     }
@@ -145,7 +145,7 @@ const server = http.createServer(async (req, res) => {
       if (url.pathname.startsWith("/api/")) {
         sendJson(res, 401, { ok: false, error: "Password required." });
       } else {
-        res.writeHead(303, { location: "/login" });
+        res.writeHead(303, { location: "./login" });
         res.end();
       }
       return;

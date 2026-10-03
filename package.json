@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",
-    "check": "node --check server.js && node --check public/app.js && node --check api/sync.js && node --check api/data.js && node --check lib/sync.js && node --check lib/store.js"
+    "check": "node --check server.js && node --check public/app.js && node --check api/sync.js && node --check api/data.js && node --check lib/sync.js && node --check lib/store.js",
+    "test": "node --test tests/subpath.test.mjs"
   },
   "engines": {
     "node": ">=20"

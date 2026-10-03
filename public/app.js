@@ -243,7 +243,7 @@ function applyCloudData(data) {
 
 async function pullCloudData({ silent = false } = {}) {
   try {
-    const serverResponse = await fetch("/api/data", {
+    const serverResponse = await fetch("./api/data", {
       method: "GET",
       headers: { "accept": "application/json" }
     });
@@ -257,7 +257,7 @@ async function pullCloudData({ silent = false } = {}) {
       return true;
     }
 
-    const response = await fetch("/api/sync", {
+    const response = await fetch("./api/sync", {
       method: "GET",
       headers: { "accept": "application/json" }
     });
@@ -291,7 +291,7 @@ async function pushCloudData({ silent = false } = {}) {
   setSyncState("동기화 중", "pending");
 
   try {
-    const serverResponse = await fetch("/api/data", {
+    const serverResponse = await fetch("./api/data", {
       method: "POST",
       headers: {
         "accept": "application/json",
@@ -308,7 +308,7 @@ async function pushCloudData({ silent = false } = {}) {
       return true;
     }
 
-    const response = await fetch("/api/sync", {
+    const response = await fetch("./api/sync", {
       method: "POST",
       headers: {
         "accept": "application/json",
