@@ -12,7 +12,7 @@ const PORT = Number(process.env.PORT || 4173);
 const HOST = process.env.HOST || "127.0.0.1";
 const store = createRoutineStore();
 const passwordProtectionEnabled = process.env.REQUIRE_APP_PASSWORD === "true";
-const appPassword = process.env.APP_PASSWORD || "";
+const appPassword = process.env.APP_PASSWORD || "1222";
 const sessionSecret = process.env.APP_SESSION_SECRET || appPassword;
 
 const mimeTypes = {
@@ -74,8 +74,8 @@ function clearSession(res) {
 }
 
 function loginPage(message = "") {
-  const error = message ? `<p class="error">${message}</p>` : "";
-  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ddubii-stock0 로그인</title><style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f5f6f8;color:#17212b;font-family:system-ui,sans-serif}.box{width:min(360px,calc(100% - 40px);padding:32px;background:#fff;border:1px solid #dfe3e8;border-radius:8px}h1{margin:0 0 8px;font-size:22px}p{color:#64707d;line-height:1.5}label,input,button{display:block;width:100%;box-sizing:border-box}input{margin:8px 0 16px;padding:12px;border:1px solid #bdc5ce;border-radius:5px;font:inherit}button{padding:12px;border:0;border-radius:5px;background:#176b54;color:#fff;font:inherit;font-weight:700}.error{color:#b42318}</style></head><body><main class="box"><h1>ddubii-stock0</h1><p>이 투자 루틴 기록은 암호로 보호됩니다.</p>${error}<form method="post" action="/login"><label for="password">암호</label><input id="password" name="password" type="password" inputmode="numeric" autocomplete="current-password" required autofocus><button type="submit">접속</button></form></main></body></html>`;
+  const error = message ? `<small>${message}</small>` : "";
+  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ddubii-stock0 로그인</title><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#f0f2f5;color:#1a202c;font:13px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.login-page{min-height:100vh;display:grid;place-content:center;text-align:center}.login-card{width:min(360px,calc(100vw - 32px));display:grid;gap:12px;padding:28px;background:#fff;border:1px solid #e2e5ec;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.08)}h1,p{margin:0}h1{font-size:22px}p{color:#6b7280}input,button{width:100%;font:inherit}input{padding:10px;border:1px solid #e2e5ec;border-radius:6px;outline:none}input:focus{border-color:#1a73e8;box-shadow:0 0 0 3px rgba(26,115,232,.12)}button{padding:9px 12px;border:1px solid #1a73e8;border-radius:6px;background:#1a73e8;color:#fff;cursor:pointer}small{color:#dc2626}</style></head><body><main class="login-page"><form class="login-card" method="post" action="/login"><h1>ddubii-stock0</h1><p>투자 루틴과 메모는 모든 기기에서 공유됩니다.</p><input id="password" name="password" type="password" inputmode="numeric" autocomplete="current-password" placeholder="비밀번호" required autofocus><button type="submit">입장</button>${error}</form></main></body></html>`;
 }
 
 async function readFormBody(req) {
