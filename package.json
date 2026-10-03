@@ -1,29 +1,15 @@
 {
-  "name": "stock0",
+  "name": "ddubii-stock0",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
+  "description": "A local web app for tracking daily stock-investing routines.",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "start": "node server.js"
+    "dev": "node server.js",
+    "start": "node server.js",
+    "check": "node --check server.js && node --check public/app.js && node --check api/sync.js && node --check api/data.js && node --check lib/sync.js && node --check lib/store.js"
   },
-  "dependencies": {
-    "express": "^4.22.2",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
-  },
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
-    "eslint": "^10.3.0",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.6.0",
-    "vite": "^8.0.12"
+  "engines": {
+    "node": ">=20"
   }
 }
