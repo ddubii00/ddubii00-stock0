@@ -38,7 +38,7 @@ git push -u origin main
 
 ## 4. Oracle 서버: 암호 보호 및 공통 저장소
 
-오라클 서버에서는 Vercel이 아니라 Node 서버를 실행합니다. `stock5-8`처럼 별도 서비스 디렉터리에 배포한 뒤, 서비스 환경변수에 아래 값을 넣습니다.
+오라클 서버에서는 Vercel이 아니라 Node 서버를 실행합니다. `stock0-7`처럼 별도 서비스 디렉터리에 배포한 뒤, 먼저 `npm install`과 `npm run build`를 실행하세요. Node 서버는 `public` 폴더가 아닌 Vite의 `dist` 빌드 결과를 서비스합니다. `base: './'` 설정이 적용되어 `/stock0-7/` 하위경로에서도 자산과 API가 현재 경로 기준으로 동작합니다. 서비스 환경변수에 아래 값을 넣습니다.
 
 ```ini
 REQUIRE_APP_PASSWORD=true
@@ -53,8 +53,8 @@ DATA_DIR=/var/lib/ddubii-stock0
 
 ```ini
 [Service]
-WorkingDirectory=/var/www/stock5-8
-Environment=PORT=3000
+WorkingDirectory=/var/www/stock0-7
+Environment=PORT=4173
 Environment=HOST=127.0.0.1
 Environment=REQUIRE_APP_PASSWORD=true
 Environment=APP_PASSWORD=1222

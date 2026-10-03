@@ -7,7 +7,7 @@ import { pullRoutineData, pushRoutineData } from "./lib/sync.js";
 import { createRoutineStore } from "./lib/store.js";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
-const PUBLIC_DIR = join(__dirname, "public");
+const PUBLIC_DIR = join(__dirname, "dist");
 const PORT = Number(process.env.PORT || 4173);
 const HOST = process.env.HOST || "127.0.0.1";
 const store = createRoutineStore();

@@ -5,10 +5,19 @@
   "description": "A local web app for tracking daily stock-investing routines.",
   "type": "module",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "vite",
     "start": "node server.js",
-    "check": "node --check server.js && node --check public/app.js && node --check api/sync.js && node --check api/data.js && node --check lib/sync.js && node --check lib/store.js",
-    "test": "node --test tests/subpath.test.mjs"
+    "build": "vite build",
+    "check": "node --check server.js && node --check api/sync.js && node --check api/data.js && node --check lib/sync.js && node --check lib/store.js",
+    "test": "npm run build && node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "vite": "^8.0.12"
   },
   "engines": {
     "node": ">=20"
